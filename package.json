@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"grunt-sftp-deploy",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "grunt-sftp-deploy",
+    "description": "api documentation for [grunt-sftp-deploy (v0.2.5)](https://github.com/thrashr888/grunt-sftp-deploy) [![npm package](https://img.shields.io/npm/v/npmdoc-grunt-sftp-deploy.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-grunt-sftp-deploy) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-grunt-sftp-deploy.svg)](https://travis-ci.org/npmdoc/node-npmdoc-grunt-sftp-deploy)",
     "devDependencies": {
-        "grunt-sftp-deploy": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "grunt-sftp-deploy": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-grunt-sftp-deploy",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-grunt-sftp-deploy",
+    "keywords": [
+        "documentation",
+        "grunt-sftp-deploy"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_grunt_sftp_deploy.js",
+    "name": "npmdoc-grunt-sftp-deploy",
+    "nameAlias": "npmdoc_grunt_sftp_deploy",
+    "nameOriginal": "npmdoc-grunt-sftp-deploy",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-grunt-sftp-deploy"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
